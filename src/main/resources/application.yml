@@ -1,0 +1,42 @@
+spring:
+  profiles:
+    active: "dev"
+  main:
+    banner-mode: "off"
+
+#change the server port for each of the service
+server:
+  port: 20003
+  error:
+    whitelabel:
+      enabled: false
+---
+spring:
+  profiles: dev
+  data:
+      mongodb:
+        uri: mongodb://apiuser:bDZt3phIDJc2WYTKmx6X@10.100.92.13/mhpdb?authSource=admin
+logging:
+    level:
+      .: ERROR
+      org.springframework: ERROR
+      com.ctl: DEBUG
+    file: ./log/reconciler.log
+    pattern:
+      console: "%d %-6level [%t] %logger{25} - %msg %n"
+      file: "%d %-6level [%t] %logger{25} - %msg %n"
+---
+spring:
+  profiles: prod
+  data:
+        mongodb:
+          uri: mongodb://apiuser:bDZt3phIDJc2WYTKmx6X@10.100.92.13/mhpdb?authSource=admin
+logging:
+    level:
+      .: ERROR
+      org.springframework: ERROR
+      com.ctl: DEBUG
+    file: ./log/reconciler.log
+    pattern:
+      console: "%d %-6level [%t] %logger{25} - %msg %n"
+      file: "%d %-6level [%t] %logger{25} - %msg %n"
